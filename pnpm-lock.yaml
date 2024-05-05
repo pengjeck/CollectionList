@@ -20,6 +20,9 @@ dependencies:
   astro:
     specifier: ^4.3.5
     version: 4.7.1(typescript@5.4.5)
+  papaparse:
+    specifier: ^5.4.1
+    version: 5.4.1
   sharp:
     specifier: ^0.32.5
     version: 0.32.6
@@ -29,6 +32,11 @@ dependencies:
   typescript:
     specifier: ^5.4.5
     version: 5.4.5
+
+devDependencies:
+  '@types/papaparse':
+    specifier: ^5.3.14
+    version: 5.3.14
 
 packages:
 
@@ -1288,7 +1296,12 @@ packages:
 
   /@types/node@17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
-    dev: false
+
+  /@types/papaparse@5.3.14:
+    resolution: {integrity: sha512-LxJ4iEFcpqc6METwp9f6BV6VVc43m6MfH0VqFosHvrUgfXiFe6ww7R3itkOQ+TCK6Y+Iv/+RnnvtRZnkc5Kc9g==}
+    dependencies:
+      '@types/node': 17.0.45
+    dev: true
 
   /@types/parse5@6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
@@ -3720,6 +3733,10 @@ packages:
       '@pagefind/linux-arm64': 1.1.0
       '@pagefind/linux-x64': 1.1.0
       '@pagefind/windows-x64': 1.1.0
+    dev: false
+
+  /papaparse@5.4.1:
+    resolution: {integrity: sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==}
     dev: false
 
   /parse-entities@4.0.1:

@@ -1,42 +1,44 @@
 ---
 import { CardGrid } from "@astrojs/starlight/components";
 import CustomLinkCard from "./CustomLinkCard.astro";
+import Papa from "papaparse";
 
 interface Props {
   url: string;
 }
 
+interface Course {
+  CourseName: string;
+  CourseLink: string;
+  Introduction: string;
+}
+
 const { url } = Astro.props;
 
-class Catogery {
-  cato: string = "";
-  rows: string[] = [];
-  constructor(cato: string) {
-    this.cato = cato;
-  }
-}
-
 const response = await fetch(url);
-const data = await response.text();
-let rows: string[] = [];
-if (data != null && data != undefined) {
-  rows = data.split("\n").splice(1);
-}
+const csvData = await response.text();
+
+const parseCourseCSV = (csvData: string): Course[] => {
+  const parsed = Papa.parse<Course>(csvData, {
+    header: true,
+    dynamicTyping: true,
+  });
+  return parsed.data;
+};
+const parsedCourseList = parseCourseCSV(csvData);
 ---
 
 <CardGrid>
   {
-    rows.map((row) => {
-      const parts = row.split(",");
+    parsedCourseList.map((course) => {
       return (
         <CustomLinkCard
-          title={parts[0]}
-          href={parts[1]}
+          title={course.CourseName}
+          href={course.CourseLink}
           bg_image=""
-          description={parts[2].slice(0, 200)}
+          description={course.Introduction.slice(0, 200)}
         />
       );
-      3;
     })
   }
 </CardGrid>
