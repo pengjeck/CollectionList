@@ -1,0 +1,42 @@
+---
+import { CardGrid } from "@astrojs/starlight/components";
+import CustomLinkCard from "./CustomLinkCard.astro";
+
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+
+class Catogery {
+  cato: string = "";
+  rows: string[] = [];
+  constructor(cato: string) {
+    this.cato = cato;
+  }
+}
+
+const response = await fetch(url);
+const data = await response.text();
+let rows: string[] = [];
+if (data != null && data != undefined) {
+  rows = data.split("\n").splice(1);
+}
+---
+
+<CardGrid>
+  {
+    rows.map((row) => {
+      const parts = row.split(",");
+      return (
+        <CustomLinkCard
+          title={parts[0]}
+          href={parts[1]}
+          bg_image=""
+          description={parts[2].slice(0, 200)}
+        />
+      );
+      3;
+    })
+  }
+</CardGrid>

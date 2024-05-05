@@ -14,11 +14,36 @@ export default defineConfig({
       github: 'https://github.com/withastro/starlight'
     },
     sidebar: [{
-      label: 'Courses',
+      label: 'Google',
       autogenerate: {
-        directory: 'Courses'
+        directory: 'Google'
       }
-    }]
+    },
+    {
+      label: 'Amazon',
+      autogenerate: {
+        directory: 'Amazon'
+      }
+    },
+    {
+      label: 'HuggingFace',
+      autogenerate: {
+        directory: 'HuggingFace'
+      }
+    },
+    {
+      label: 'Microsoft',
+      autogenerate: {
+        directory: 'Microsoft'
+      }
+    },
+    {
+      label: 'OpenAI',
+      autogenerate: {
+        directory: 'OpenAI'
+      }
+    }
+    ]
   }), tailwind({
     applyBaseStyles: false
   })]
